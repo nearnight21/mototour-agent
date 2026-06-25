@@ -1,0 +1,80 @@
+# 海拔效应知识库
+# 涵盖海拔对人（高原反应）和车（动力衰减）的影响
+
+human_effects:
+  rules:
+    temperature_lapse_rate: "海拔每上升1000米，气温下降约6°C"
+    uv_increase: "海拔每上升1000米，紫外线增加约10-12%"
+    dehydration: "高海拔呼吸加速，水分流失更快，需主动补水"
+
+  altitude_bands:
+    - range: "0-2000m"
+      label: "无影响区"
+      ams_risk: none
+      symptoms: []
+      acclimatization: "无需适应"
+      sleep_altitude_max: 2000
+
+    - range: "2000-3000m"
+      label: "轻微影响区"
+      ams_risk: mild
+      symptoms: ["少数人轻微头痛", "活动后气短加重"]
+      acclimatization: "建议在2500m左右停留1晚适应"
+      sleep_altitude_max: 3000
+
+    - range: "3000-4000m"
+      label: "高反高发区"
+      ams_risk: high
+      symptoms: ["头痛常见", "睡眠困难", "食欲下降", "活动耐力明显下降"]
+      acclimatization: "每上升500m停留适应，不强行赶路"
+      sleep_altitude_max: 3800
+      warning: "大多数人会出现不同程度症状，不代表不能骑行"
+
+    - range: "4000-5000m"
+      label: "高风险区"
+      ams_risk: very_high
+      symptoms: ["大多数人有明显症状", "嘴唇发紫", "心率显著加快", "轻微活动即气喘"]
+      acclimatization: "快速通过，不过夜"
+      sleep_altitude_max: 4500
+      warning: "夜宿海拔建议不超过4500米。高反药（乙酰唑胺/红景天）需提前服用。"
+
+    - range: "above_5000m"
+      label: "危险区"
+      ams_risk: critical
+      symptoms: ["高反症状显著", "有肺水肿/脑水肿风险", "判断力下降"]
+      rule: "快速通过，绝对不过夜"
+      emergency: "出现意识模糊、呼吸困难加重时立即下撤"
+
+  prevention:
+    - "提前3-5天服用红景天（效果因人而异）"
+    - "乙酰唑胺（ Diamox）需处方，预防效果明确"
+    - "保持水分摄入，避免酒精"
+    - "上升速度是最关键因素：每天净上升不超过500-800m睡海拔"
+    - "头痛时布洛芬可缓解症状，但治标不治本"
+
+engine_effects:
+  rules:
+    general: "自然吸气发动机每上升1000米动力损失约10%"
+    fuel_injection: "电喷车自动调节空燃比，动力损失相对可控"
+    carburetor: "化油器车需手动调校，高原表现明显差于电喷"
+
+  by_altitude:
+    - range: "0-3000m"
+      fi_effect: "几乎无影响"
+      carb_effect: "动力轻微下降"
+      note: "所有车型均可正常运行"
+
+    - range: "3000-4000m"
+      fi_effect: "动力下降约10-15%，日常骑行可感知但不影响行驶"
+      carb_effect: "动力明显下降，可能出现加不上油、熄火"
+      note: "化油器车建议提前调教化油器（减少主量孔）"
+
+    - range: "4000-5000m"
+      fi_effect: "动力下降约15-20%，超车和爬坡能力明显减弱"
+      carb_effect: "严重动力损失，极不建议化油器车上此海拔"
+      note: "小排量车（<250cc）爬坡会非常吃力"
+
+    - range: "above_5000m"
+      fi_effect: "动力下降约20-30%，部分小排量车可能极速低于60km/h"
+      carb_effect: "基本无法正常行驶"
+      note: "大排量ADV（800cc+）仍可维持基本行驶能力"

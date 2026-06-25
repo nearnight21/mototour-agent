@@ -1,0 +1,72 @@
+# 摩托车轮胎类型与路面兼容性知识库
+# V1 - 三条核心类型，覆盖90%摩旅场景
+
+road:
+  name: "公路胎 / 运动旅行胎"
+  surface_compatibility:
+    paved: suitable
+    gravel_road: unsuitable
+    hardpack_dirt: unsuitable
+    rutted_dirt: unsuitable
+    sand: unsuitable
+    mud: unsuitable
+    river_crossing: unsuitable
+  wet_performance:
+    paved: good
+    offroad: poor
+  typical_lifespan_km: 12000-18000
+  brands_examples:
+    - "Michelin Road 6"
+    - "Pirelli Angel GT"
+    - "Metzeler Roadtec 01"
+  recommendation: "仅适合全程铺装路面。川藏线/丙察察等含非铺装路段强烈不推荐。"
+
+dual_sport:
+  name: "两用胎 / 80公路+20非铺装"
+  aliases: ["全地形胎", "ADV胎", "dual-sport"]
+  surface_compatibility:
+    paved: suitable
+    gravel_road: suitable
+    hardpack_dirt: suitable
+    rutted_dirt: marginal
+    sand: unsuitable
+    mud: unsuitable
+    river_crossing: marginal
+  wet_performance:
+    paved: moderate
+    offroad: moderate
+  typical_lifespan_km: 6000-10000
+  brands_examples:
+    - "Michelin Anakee Adventure"
+    - "Pirelli Scorpion Trail II"
+    - "Metzeler Tourance Next"
+    - "正新 CM-AD01"
+  recommendation: "国内摩旅首选。川藏线、独库公路等有非铺装路段的路线推荐标配。"
+
+knobby:
+  name: "越野胎 / 大颗粒胎"
+  aliases: ["菠萝胎", "巧克力胎", "knobby"]
+  surface_compatibility:
+    paved: marginal
+    gravel_road: suitable
+    hardpack_dirt: suitable
+    rutted_dirt: suitable
+    sand: suitable
+    mud: suitable
+    river_crossing: suitable
+  wet_performance:
+    paved: poor
+    offroad: good
+  typical_lifespan_km: 3000-6000
+  brands_examples:
+    - "Michelin Anakee Wild"
+    - "Pirelli Scorpion Rally"
+    - "Continental TKC 80"
+    - "正新 CM509"
+  recommendation: "重度非铺装路线（丙察察雨季、阿里中线）强烈推荐。公路湿滑需谨慎，磨损快。适合有经验的骑手。"
+
+general_rules:
+  - "胎压影响巨大：非铺装可适当降低胎压（前1.5-1.8 bar，后1.8-2.0 bar）以增加抓地面积"
+  - "雨天公路胎优于两用胎，两用胎优于越野胎"
+  - "长途摩旅建议出发前确认胎纹深度不少于2mm"
+  - "补胎工具和便携气泵是必带装备，非铺装路段扎胎概率显著升高"

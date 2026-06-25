@@ -1,0 +1,328 @@
+# 国内摩旅核心路线基线数据
+# 只记录物理事实，不做季节判断（季节经验由 agent-reach 实时搜索提供）
+
+routes:
+
+  g318_sichuan_tibet:
+    name: "川藏线（G318 成都-拉萨段）"
+    aliases: ["318", "川藏南线", "G318川藏段"]
+    start: "成都"
+    end: "拉萨"
+    total_km: 2140
+    overall_difficulty: "intermediate"
+    note: "中国最成熟的进藏摩旅路线，基础设施完善"
+    segments:
+      - name: "成都-康定"
+        km: 330
+        surface: "paved"
+        altitude_range: [500, 2800]
+        difficulty: "easy"
+        note: "全程铺装高速/国道，第一天热身路段"
+      - name: "康定-理塘"
+        km: 280
+        surface: "paved"
+        altitude_range: [2500, 4300]
+        difficulty: "intermediate"
+        note: "翻越折多山(4298m)、剪子湾山(4659m)、卡子拉山(4718m)。连续高海拔骑行，注意高反"
+      - name: "理塘-巴塘"
+        km: 200
+        surface: "paved"
+        altitude_range: [2600, 4700]
+        difficulty: "intermediate"
+        note: "海子山(4685m)，姊妹湖。理塘4000m+过夜需注意高反"
+      - name: "巴塘-芒康"
+        km: 105
+        surface: "paved"
+        altitude_range: [2600, 4200]
+        difficulty: "intermediate"
+        note: "过金沙江进入西藏，检查站"
+      - name: "芒康-八宿"
+        km: 360
+        surface: "paved"
+        altitude_range: [2700, 5100]
+        difficulty: "advanced"
+        note: "东达山(5130m，川藏线最高点)、怒江72拐。318全线最有挑战的一天"
+      - name: "八宿-林芝"
+        km: 450
+        surface: "paved"
+        altitude_range: [2800, 4500]
+        difficulty: "intermediate"
+        note: "然乌湖、波密。路况较好但里程长"
+      - name: "林芝-拉萨"
+        km: 400
+        surface: "paved"
+        altitude_range: [3000, 5000]
+        difficulty: "intermediate"
+        note: "林拉高速（摩托车可上）或G318老路。米拉山(5013m)"
+    risk_months:
+      1-3: ["大雪封山", "暗冰", "部分垭口封闭"]
+      4: ["路面冰雪融化", "偶有降雪"]
+      5: ["逐渐进入适宜期"]
+      6: ["雨季开始", "偶有塌方"]
+      7-8: ["雨季高峰", "塌方风险高", "修路集中"]
+      9: ["雨季尾声", "最佳窗口之一"]
+      10: ["最佳窗口", "秋景", "早晚偏冷"]
+      11: ["开始降雪", "部分路段可能积雪"]
+      12: ["严寒", "路面冰雪", "不推荐"]
+
+  duku:
+    name: "独库公路（G217 独山子-库车段）"
+    aliases: ["独库", "天山公路", "G217独库段"]
+    start: "独山子"
+    end: "库车"
+    total_km: 561
+    overall_difficulty: "intermediate"
+    note: "季节性开放公路（通常6月初-10月初），穿越天山南北。风景密度极高"
+    segments:
+      - name: "独山子-乔尔玛"
+        km: 135
+        surface: "paved"
+        altitude_range: [700, 3400]
+        difficulty: "intermediate"
+        note: "翻越哈希勒根达坂(3390m)。北坡陡、弯多"
+      - name: "乔尔玛-那拉提"
+        km: 100
+        surface: "paved"
+        altitude_range: [1300, 3000]
+        difficulty: "easy"
+        note: "相对平缓，风景优美"
+      - name: "那拉提-巴音布鲁克"
+        km: 75
+        surface: "paved"
+        altitude_range: [1800, 2700]
+        difficulty: "easy"
+        note: "草原路段，视野开阔但侧风大"
+      - name: "巴音布鲁克-库车"
+        km: 250
+        surface: "paved"
+        altitude_range: [1050, 3200]
+        difficulty: "intermediate"
+        note: "铁力买提达坂(3220m)，南坡干燥。峡谷路段弯急"
+    risk_months:
+      1-5: ["道路封闭（冬季封路）"]
+      6: ["刚开通", "山顶可能有残雪", "天气不稳定"]
+      7-8: ["旺季", "车流大", "偶有暴雨和落石"]
+      9: ["最佳窗口", "秋色", "天气稳定"]
+      10: ["接近封路", "可能突然降雪封闭"]
+
+  bingchacha:
+    name: "丙察察（丙中洛-察瓦龙-察隅）"
+    aliases: ["滇藏新通道", "BCC", "G219丙察察段"]
+    start: "丙中洛"
+    end: "察隅"
+    total_km: 280
+    overall_difficulty: "advanced"
+    note: "曾经最艰险进藏路线。2024年已基本完成柏油化改造，但仍含大量非铺装路段。新手慎入。"
+    segments:
+      - name: "丙中洛-察瓦龙"
+        km: 80
+        surface: ["gravel_road", "paved"]
+        altitude_range: [1700, 3500]
+        difficulty: "intermediate"
+        note: "怒江峡谷。部分路段紧贴悬崖，路面碎石多。大流沙路段需快速通过"
+      - name: "察瓦龙-察隅"
+        km: 200
+        surface: ["gravel_road", "rutted_dirt", "paved"]
+        altitude_range: [2000, 4700]
+        difficulty: "advanced"
+        note: "翻越3个4500m+垭口（雄珠拉、昌拉、益秀拉）。非铺装+高海拔+低温三重挑战"
+    risk_months:
+      1-3: ["大雪封山", "路面冰雪", "不建议"]
+      4: ["雪融化", "泥泞", "部分路段未开通"]
+      5: ["逐渐通行", "残余冰雪", "落石高发"]
+      6: ["雨季开始", "泥石流风险"]
+      7-8: ["雨季高峰", "塌方泥石流高发", "非铺装路段变泥潭", "新手强烈不推荐"]
+      9: ["雨季尾声", "最佳窗口之一"]
+      10: ["最佳窗口", "天气稳定", "秋色"]
+      11: ["开始降雪", "风险上升"]
+      12: ["封山", "不建议"]
+
+  ali_loop:
+    name: "阿里大环线"
+    aliases: ["阿里环线", "藏北环线", "西藏西线"]
+    start: "拉萨"
+    end: "拉萨（环线）"
+    total_km: 3800
+    overall_difficulty: "advanced"
+    note: "世界屋脊的屋脊。平均海拔4500m+。对人和车都是终极考验。经验不足的骑手不建议。"
+    segments:
+      - name: "拉萨-日喀则-萨嘎"
+        km: 750
+        surface: "paved"
+        altitude_range: [3600, 4500]
+        difficulty: "intermediate"
+        note: "G318+G219，全程铺装。进入高原腹地"
+      - name: "萨嘎-普兰（神山圣湖区）"
+        km: 550
+        surface: "paved"
+        altitude_range: [4500, 5200]
+        difficulty: "advanced"
+        note: "玛旁雍错、冈仁波齐。极高海拔骑行，动力显著衰减"
+      - name: "札达-狮泉河"
+        km: 250
+        surface: "paved"
+        altitude_range: [3700, 4500]
+        difficulty: "intermediate"
+        note: "札达土林。路面好但偏远"
+      - name: "狮泉河-改则-尼玛（藏北荒原）"
+        km: 1200
+        surface: ["paved", "gravel_road", "rutted_dirt"]
+        altitude_range: [4300, 5000]
+        difficulty: "advanced"
+        note: "阿里大北线。部分地区全程非铺装。加油站间距200-400km。极度荒凉"
+      - name: "尼玛-纳木错-拉萨"
+        km: 800
+        surface: ["paved", "gravel_road"]
+        altitude_range: [3600, 4700]
+        difficulty: "intermediate"
+        note: "逐渐回到文明区域"
+    risk_months:
+      1-4: ["极寒", "大雪", "不推荐"]
+      5: ["寒冷", "可能降雪", "部分路段未完全解冻"]
+      6: ["逐渐可行", "偶有降雪"]
+      7-8: ["最佳窗口", "但雨季部分非铺装路段泥泞"]
+      9: ["最佳窗口", "秋色绝美", "早晚极冷"]
+      10: ["接近冬季", "降雪风险上升"]
+      11-12: ["严寒封路", "不推荐"]
+
+  gannan_sichuan:
+    name: "甘南-川西小环线"
+    aliases: ["甘南川西", "甘南环线", "川西小环线"]
+    start: "兰州"
+    end: "成都"
+    total_km: 1500
+    overall_difficulty: "easy_to_intermediate"
+    note: "适合新手的高原适应路线。海拔低于318但风景不输。文化和自然景观兼备"
+    segments:
+      - name: "兰州-夏河（拉卜楞寺）"
+        km: 230
+        surface: "paved"
+        altitude_range: [1500, 2900]
+        difficulty: "easy"
+        note: "高原热身段"
+      - name: "夏河-郎木寺-若尔盖"
+        km: 350
+        surface: "paved"
+        altitude_range: [2900, 3600]
+        difficulty: "easy"
+        note: "桑科草原、若尔盖草原。草原公路，侧风注意"
+      - name: "若尔盖-红原-马尔康"
+        km: 300
+        surface: "paved"
+        altitude_range: [2600, 3800]
+        difficulty: "easy"
+        note: "草原+峡谷混合。风景密度高"
+      - name: "马尔康-色达-炉霍"
+        km: 350
+        surface: "paved"
+        altitude_range: [2600, 4000]
+        difficulty: "intermediate"
+        note: "色达五明佛学院（海拔4000m）。翻越多个3800m+垭口"
+      - name: "炉霍-道孚-康定-成都"
+        km: 400
+        surface: "paved"
+        altitude_range: [500, 3500]
+        difficulty: "intermediate"
+        note: "折多山。成都方向下山，注意刹车疲劳"
+    risk_months:
+      1-3: ["严寒", "部分路段积雪", "不推荐"]
+      4: ["气温回升", "偶有降雪"]
+      5-6: ["春季花开", "适合新手"]
+      7-8: ["雨季", "草原雨后泥泞", "但整体风险低于318"]
+      9-10: ["最佳窗口", "秋色金黄"]
+      11-12: ["降雪降温", "不推荐"]
+
+  yunnan_loop:
+    name: "云南大环线（昆明-大理-丽江-香格里拉-泸沽湖-昆明）"
+    aliases: ["云南环线", "滇西北环线"]
+    start: "昆明"
+    end: "昆明（环线）"
+    total_km: 1800
+    overall_difficulty: "easy_to_intermediate"
+    note: "适合新手和休闲摩旅。路况好、酒店多、风景绝佳。海拔从昆明1900m逐步升高，适合高原适应训练。"
+    segments:
+      - name: "昆明-大理"
+        km: 330
+        surface: "paved"
+        altitude_range: [1900, 2000]
+        difficulty: "easy"
+        note: "全程高速/国道。午饭在大理古城"
+      - name: "大理-丽江"
+        km: 180
+        surface: "paved"
+        altitude_range: [2000, 2400]
+        difficulty: "easy"
+        note: "洱海东岸或西岸均可，风景绝佳"
+      - name: "丽江-香格里拉"
+        km: 180
+        surface: "paved"
+        altitude_range: [2400, 3300]
+        difficulty: "easy"
+        note: "虎跳峡（可选）。进入藏区，海拔上升但路况好"
+      - name: "香格里拉-德钦（梅里雪山）"
+        km: 180
+        surface: "paved"
+        altitude_range: [3300, 4300]
+        difficulty: "intermediate"
+        note: "白马雪山(4292m)。注意高反。梅里雪山日照金山"
+      - name: "德钦-泸沽湖"
+        km: 500
+        surface: "paved"
+        altitude_range: [2000, 3500]
+        difficulty: "intermediate"
+        note: "横穿滇西北。山路多弯，里程长。可拆为两天"
+      - name: "泸沽湖-昆明"
+        km: 800
+        surface: "paved"
+        altitude_range: [1500, 2700]
+        difficulty: "intermediate"
+        note: "经攀枝花/西昌或丽江回昆明。两日路程"
+    risk_months:
+      1-2: ["早晚寒冷", "偶有降雪（香格里拉段）"]
+      3-4: ["春暖花开", "适合新手"]
+      5-6: ["最佳窗口", "花季"]
+      7-8: ["雨季", "滇西北降雨频繁", "但路面好风险可控"]
+      9-10: ["最佳窗口", "秋高气爽"]
+      11-12: ["降温", "香格里拉段可能降雪"]
+
+  northeast_loop:
+    name: "东北边境环线（丹东-长白山-珲春-绥芬河）"
+    aliases: ["东北环线", "长白山环线", "G331东北段"]
+    start: "丹东"
+    end: "绥芬河"
+    total_km: 1200
+    overall_difficulty: "easy_to_intermediate"
+    note: "夏季避暑摩旅绝佳路线。沿中朝/中俄边境，朝鲜族文化。冬季绝对不可骑行"
+    segments:
+      - name: "丹东-集安"
+        km: 300
+        surface: "paved"
+        altitude_range: [10, 600]
+        difficulty: "easy"
+        note: "沿鸭绿江边境公路，对岸是朝鲜。风景独特"
+      - name: "集安-长白山（西坡/北坡）"
+        km: 350
+        surface: "paved"
+        altitude_range: [600, 2000]
+        difficulty: "intermediate"
+        note: "长白山山路弯多坡陡。注意动物穿行"
+      - name: "长白山-珲春（防川一眼望三国）"
+        km: 300
+        surface: "paved"
+        altitude_range: [50, 1000]
+        difficulty: "easy"
+        note: "森林公路。珲春防川可望中俄朝三国"
+      - name: "珲春-绥芬河"
+        km: 250
+        surface: "paved"
+        altitude_range: [50, 800]
+        difficulty: "easy"
+        note: "中俄边境，异域风情。G331国道"
+    risk_months:
+      1-3: ["极寒", "-20°C以下", "绝对不可骑行"]
+      4: ["气温回升", "路面可能有残冰"]
+      5: ["渐入佳境", "春季花季"]
+      6-8: ["最佳窗口", "凉爽舒适", "避暑胜地"]
+      9: ["最佳窗口", "秋色初现"]
+      10: ["初秋", "气温骤降", "需关注天气预报"]
+      11-12: ["严寒降雪", "不推荐"]

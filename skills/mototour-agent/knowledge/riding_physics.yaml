@@ -1,0 +1,102 @@
+# 骑行物理知识库
+# 日里程、疲劳模型、编队效率
+
+daily_range:
+  by_surface_and_skill:
+    paved:
+      novice:
+        max_km: 300
+        comfortable_km: 200
+        note: "新手在铺装路面的安全上限，含休息时间"
+      intermediate:
+        max_km: 500
+        comfortable_km: 350
+      advanced:
+        max_km: 700
+        comfortable_km: 500
+        note: "国内高速公路限速80km/h（摩托车），实际长途均速60-70km/h"
+
+    mixed_paved_gravel:
+      novice:
+        max_km: 200
+        comfortable_km: 120
+        note: "非铺装新手极易疲劳"
+      intermediate:
+        max_km: 350
+        comfortable_km: 250
+      advanced:
+        max_km: 500
+        comfortable_km: 350
+
+    primarily_offroad:
+      novice:
+        max_km: 0
+        comfortable_km: 0
+        recommendation: "强烈不推荐非铺装新手单独骑行"
+      intermediate:
+        max_km: 200
+        comfortable_km: 120
+        note: "非铺装200km的疲劳度≈铺装500km"
+      advanced:
+        max_km: 300
+        comfortable_km: 200
+
+fatigue_multipliers:
+  rules:
+    - "非铺装路面疲劳速度是铺装的2-3倍"
+    - "雨天骑行疲劳速度增加约50-80%"
+    - "高海拔（>3500m）骑行疲劳速度增加30-50%"
+    - "连续多日骑行时，Day3-4是疲劳低谷（身体尚未适应+累积疲劳）"
+    - "逆风或侧风骑行额外增加20-30%疲劳"
+    - "负重（带行李/后座乘客）增加约20%疲劳"
+  
+  cumulative:
+    day_1: "精神兴奋，体能充沛，容易超量骑行（注意控制）"
+    day_2: "肌肉开始酸痛，但体能尚可"
+    day_3: "疲劳低谷，身体尚未适应长时间骑行节奏"
+    day_4: "仍处于疲劳期。如前期超量，今天会非常痛苦"
+    day_5: "身体开始适应，节奏感逐渐建立"
+    day_6: "适应期，体能回升"
+    day_7_plus: "进入稳态，但需安排休整日（建议每5-7天休整1天）"
+
+ride_planning:
+  golden_rules:
+    - "日出而骑、日落而宿：高原/山区夜间骑行危险极高"
+    - "预留机动时间：行程计划应留20-30%缓冲应对天气/修路/身体不适"
+    - "上午最快、下午最慢：非铺装路段下午起雾/下雨概率高，上午适合赶非铺装路段"
+    - "饭前不赶路：饭后30-45分钟不宜立即骑行（血液集中在消化系统）"
+    - "每小时休息10分钟：喝水和拉伸，保持注意力"
+    - "油箱过半即找加油站：高原/偏远地区加油站间距可达200km+"
+
+group_riding:
+  solo:
+    pros: "节奏完全自由，决策快"
+    cons: "无照应，故障/事故时风险高"
+    recommendation: "适合经验骑手。新手不建议独自长途。"
+
+  pair:
+    pros: "最佳编队人数，互相照应效率最高"
+    cons: "两人节奏需匹配"
+    recommendation: "理想编队。建议排量/经验相近。"
+
+  three_to_five:
+    pros: "分工明确（领队/压尾/拍摄），安全冗余高"
+    cons: "决策效率下降，休息时间变长，排量差距大时掉队问题"
+    note: "需约定集合点和节奏，排量差距不宜超过200cc"
+    recommendation: "常见组队规模。需有明确领队。"
+
+  above_five:
+    pros: "气氛好，安全冗余最高"
+    cons: "效率显著下降，每多一个人就多一个意见，多一个故障概率"
+    note: "加油/休息时间翻倍，一天200km是上限"
+    recommendation: "不推荐长途摩旅。可分两组行动。"
+
+route_type_factor:
+  mountain_pass:
+    note: "每个垭口增加约30-60分钟（拍照+休息+适应海拔）"
+  canyon:
+    note: "日照时间短，下午3点后峡谷可能无阳光，温度骤降"
+  plateau:
+    note: "全天日照强烈，防风防晒是刚需。路直但侧风大"
+  forest:
+    note: "湿度高，清晨和黄昏动物穿行风险。路面苔藓湿滑"
