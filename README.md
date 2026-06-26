@@ -183,3 +183,18 @@ Agent 使用 agent-reach + OpenCLI 跨三个平台并行搜索：
 | OpenCLI 报 BROWSER_CONNECT | Chrome 扩展未连接 → 重新加载扩展或 `opencli daemon restart` |
 | mcporter 报 Unknown MCP server | 运行 `agent-reach install --env=auto` 注册后端 |
 | 某路线搜不到结果 | 正常——Agent 会诚实告知并降级为知识库推断 |
+---
+
+## 变更日志
+
+### v1.1.0 (2026-06-26)
+- 集成 Tavily 中文长文搜索（Cloudflare Workers 代理，多 Key 管理）
+- SKILL.md 新增 Tavily 搜索策略章节
+- 更新 README 搜索策略表
+- 修复 README 编码乱码
+
+### v0.1.0 (2026-06-25)
+- 初始版本
+- 4 个通用知识域（轮胎/海拔/生理/骑行物理）
+- 7 条国内核心摩旅路线基线
+- agent-reach + OpenCLI 跨平台搜索
