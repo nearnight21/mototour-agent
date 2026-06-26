@@ -101,6 +101,42 @@ triggers:
 
 ---
 
+## 强制多信源协作（每次查询必执行）
+
+**每次接到摩旅相关查询，必须同时调用以下 3 个信源**，不允许只用一个。
+
+### 信源 1: Tavily（搜索引擎全网）
+```powershell
+# 通用搜索（需要走 V2RayN 10808 代理，Node 脚本内置 ProxyAgent）
+node "$skillDir\tools\tavily_search.mjs" "{query}" 8 "advanced"
+```
+
+### 信源 2: 小红书 OpenCLI（需 Chrome 登录态）
+```powershell
+opencli xiaohongshu search "{query}" --limit 8 -f yaml
+# 抓最相关笔记正文（需完整 signed URL）
+opencli xiaohongshu note "{full_note_url}" -f yaml
+# 抓评论
+opencli xiaohongshu comments "{full_note_url}" -f yaml
+```
+
+### 信源 3: B站 OpenCLI（无需登录）
+```powershell
+opencli bilibili search "{query}" --limit 5 -f yaml
+# 抓视频详情
+opencli bilibili video "{bvid}" -f yaml
+# 抓评论
+opencli bilibili comments "{bvid}" -f yaml
+```
+
+### 协作原则
+- **3 个信源并行调用**（如果时间允许），不要串行
+- 每个信源至少取 5 条结果做交叉验证
+- 出现矛盾时**呈现矛盾**，不调和
+- 信源不足时降一档置信度（🟢→🟡，🟡→🔴）
+
+---
+
 ## 搜索策略（agent-reach + OpenCLI）
 
 搜索前先确保环境就绪：

@@ -1,0 +1,18 @@
+{
+  "name": "mototour-agent",
+  "version": "1.1.1",
+  "description": "摩旅季节经验推理助手：通用知识库 + 全网实时搜索 → LLM 综合分析路线×月份的骑行可行性",
+  "author": {
+    "name": "Nora"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "摩旅 Agent",
+    "shortDescription": "输入路线+月份+车型，综合知识库与全网真实经验，输出客观骑行建议。",
+    "longDescription": "基于轮胎、海拔、生理学、骑行物理4大通用知识库 + 7条核心路线基线数据 + agent-reach + OpenCLI + Tavily 跨平台实时搜索，由LLM合成分维度的摩旅季节建议。不做假精度，每条结论附信源引用和置信度评估。",
+    "developerName": "Nora",
+    "category": "Travel",
+    "capabilities": [],
+    "defaultPrompt": "我想了解某条摩旅路线在某个月份的骑行情况。请告诉我你想了解的路线、出发月份、车型和你的骑行经验水平。"
+  }
+}
