@@ -136,7 +136,8 @@ Agent 使用 agent-reach + OpenCLI 跨三个平台并行搜索：
 |------|------|---------|--------|
 | 小红书 | OpenCLI (需Chrome登录态) | `opencli xiaohongshu search` → `note` → `comments` | 正文+评论 |
 | B站 | OpenCLI + Exa 双通道 | `opencli bilibili search` + `exa site:bilibili.com` | 标题+简介+数据 |
-| 网页/论坛 | Exa (mcporter) | `mcporter call exa.web_search_exa` | 全文摘要 |
+| 中文长文/新闻 | Tavily (mcporter) | `mcporter call tavily.tavily-search` | 全文+score评分 |
+| 英文社区/兜底 | Exa (mcporter) | `mcporter call exa.web_search_exa` | 全文摘要 |
 
 **时效分层：**
 - 🟢 近1年：优先采用

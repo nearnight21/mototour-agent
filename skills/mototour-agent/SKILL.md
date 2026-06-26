@@ -3,7 +3,7 @@ name: mototour-agent
 description: >
   摩旅季节经验推理助手。
   输入路线+月份+车型+经验水平，基于通用知识库（轮胎/海拔/生理学/骑行物理）
-  和全网实时搜索（agent-reach），输出分维度的骑行可行性分析。
+  和全网实时搜索（agent-reach + OpenCLI + Tavily），输出分维度的骑行可行性分析。
   不做实时路况监控，不做视频转录，不做假精度。
   输出客观，不确定就是不确定。
 
@@ -159,7 +159,34 @@ mcporter call 'exa.web_search_exa(query: "site:bilibili.com {route_name} 摩旅"
 - 次选：标题只含路线（从发布时间和简介推断月份）
 - 只读文字层：标题 + 简介 + 播放/点赞数据（高播放≠高质量，但可作参考）
 
-#### 3. Exa 网页搜索（论坛/攻略站/英文社区）
+#### 3. Tavily 网页搜索（中文长文/官方/新闻）
+```
+# 通用搜索（返回标题+URL+摘要+分数）
+mcporter call 'tavily.tavily-search(query: "{route_name} {month}月 摩托车 骑行经验", max_results: 5)' --timeout 60000
+
+# 新闻模式（实时路况/最新事件）
+mcporter call 'tavily.tavily-search(query: "{route_name} 修路 塌方 {current_year}", topic: "news", max_results: 3)' --timeout 60000
+
+# 深度搜索（高质量但慢，2 credits）
+mcporter call 'tavily.tavily-search(query: "{route_name} {month}月 攻略", search_depth: "advanced", max_results: 3)' --timeout 90000
+
+# 限定来源（如摩托之家、8264、马蜂窝）
+mcporter call 'tavily.tavily-search(query: "{route_name} 摩托", include_domains: ["8264.com", "moto2s.cn", "mafengwo.cn"])' --timeout 60000
+```
+
+**Tavily 特有的价值**：
+- 中文长文/官方/新闻媒体源最强（Exa 较弱）
+- 返回结果带 `score` 相关性评分，便于筛选
+- `topic: "news"` 可拿到最新路况/修路/管制信息
+- `include_domains` 可精准定向到摩托车/攻略/政府网站
+- 配合 OpenCLI 代理使用时，必须在 mcporter config 的 `env` 中设置 `HTTPS_PROXY=...`
+
+**筛选标准**：
+- 优先：score > 0.7 且为攻略/游记/官方公告
+- 次选：score 0.5-0.7 需人工快速判断
+- 忽略：score < 0.3 或明显是广告/商品页
+
+#### 4. Exa 网页搜索（英文社区/兜底）
 `
 mcporter call 'exa.web_search_exa(query: "{route_name} {month}月 骑行 攻略 游记", numResults: 8)'
 mcporter call 'exa.web_search_exa(query: "{route_english} motorcycle {month_english} conditions", numResults: 5)'
