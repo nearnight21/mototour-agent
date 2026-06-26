@@ -172,13 +172,22 @@ Test-Path "C:\Users\Nora\.agent-reach\chrome-data\Default\Network\Cookies"
 # 应返回 True
 ```
 
-### 3. `xiaohongshu search` 报 AUTH_REQUIRED
+### 3. `xiaohongshu search` 在 Chrome 未登录时返回 AUTH_REQUIRED
 
-**症状**：明明 Chrome 已经登录小红书，`opencli xiaohongshu search` 还是返回 `AUTH_REQUIRED`。
+**症状**：11860 Chrome **未登录**小红书时，`opencli xiaohongshu search` 返回 `AUTH_REQUIRED`。
 
-**原因**：小红书 SPA **忽略 `?keyword=...` URL 参数**——直接打开 `xiaohongshu.com/search?keyword=xxx` 会显示首页热门笔记，**不是**搜索结果。`xiaohongshu search` 内部就是用这个方法触发。
+**原因**：小红书搜索结果在未登录时显示登录墙（"登录后查看搜索结果"），opencli 检测到这个文本会报 AUTH_REQUIRED。**一旦 Chrome 自动登录（Cookies 写盘后），`xiaohongshu search` 直接工作**——不需要用户手动触发搜索。
 
-**解决**：让用户**手动**在 11860 Chrome 的搜索框里输入关键词并回车，然后 opencli 接管搜索结果页，再用 `opencli xiaohongshu note <full_url>` 抓正文。
+**使用方式**（登录态）：
+```bash
+# 直接 search 就能工作（不再需要用户手动操作）
+opencli xiaohongshu search "川藏线 摩旅 9月" --limit 8 -f yaml
+```
+
+**获取笔记正文**（用 search 输出的完整 URL）：
+```bash
+opencli xiaohongshu note "https://www.xiaohongshu.com/search_result/<id>?xsec_token=...&xsec_source=" -f yaml
+```
 
 ### 4. 临时加载 OpenCLI 扩展会污染 Chrome profile
 
@@ -436,7 +445,7 @@ Agent 强制并行调用 **3 个信源**（Tavily + 小红书 + B站）做交叉
 | 症状 | 检查 |
 |------|------|
 | 小红书搜不到 | `opencli doctor` → Extension 是否 connected？Chrome 是否登录了 xiaohongshu.com？ |
-| 小红书报 AUTH_REQUIRED | 用户**手动**在 Chrome 搜索框输入并提交（URL 参数无效） |
+| 小红书报 AUTH_REQUIRED | 检查 11860 Chrome 是否已登录 xiaohongshu.com |
 | B站搜不到 | `opencli bilibili search "<query>" --limit 5` 即可 |
 | OpenCLI 报 BROWSER_CONNECT | Chrome 扩展未连接 → `opencli daemon restart` |
 | 隔离 Chrome 启动后被清理 | 用 `wmic process call create` 而不是 `Start-Process` |
@@ -448,6 +457,11 @@ Agent 强制并行调用 **3 个信源**（Tavily + 小红书 + B站）做交叉
 ---
 
 ## 变更日志
+
+### v1.1.2 (2026-06-26)
+- **修复 README 错误**：删除错误的 "`xiaohongshu search` URL 参数无效" 说法
+- **澄清**：登录态下 `xiaohongshu search` 直接工作，5 秒内拿到搜索结果
+- AUTH_REQUIRED 仅在未登录时出现
 
 ### v1.1.1 (2026-06-26)
 - **强制多信源协作**：每次摩旅查询自动调用 Tavily + 小红书 + B站 三源并行
